@@ -32,7 +32,7 @@
         <li><a class="text-sm text-gray-50 hover:text-gray-200" href="/campgrounds/new">New Campground</a></li>
     </ul>
 
-    <% if(loggedInUser) { %>
+    <% if(!loggedInUser) { %>
         <a class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200"
             href="/logout">Logout</a>
         <% } else { %>
@@ -74,7 +74,7 @@
         </div>
         <div class="mt-auto">
             <div class="pt-6">
-                <% if(loggedInUser) { %>
+                <% if(!loggedInUser) { %>
                     <a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-xl"
                         href="/logout">Logout</a>
                     <% } else { %>
