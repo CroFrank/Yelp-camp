@@ -1,7 +1,3 @@
-if (process.env.NODE_ENV !== "production") {
-    require('dotenv').config();
-}
-
 const express = require('express');
 const path = require('path');
 const methodOverride = require('method-override');
@@ -18,6 +14,8 @@ const passportL = require('passport-local');
 const User = require('./models/user')
 const MongoStore = require('connect-mongo');
 const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/yelp-camp'
+
+let loggedInUser;
 
 main().catch(err => console.log('err'));
 async function main() {
@@ -67,7 +65,7 @@ passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
 app.use((req, res, next) => {
-    res.locals.loggedInUser = req.user || undefined;
+    res.locals.loggedInUser = req.user
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     next()
