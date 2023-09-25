@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
 const express = require('express');
 const path = require('path');
 const methodOverride = require('method-override');
@@ -13,6 +17,7 @@ const passport = require('passport');
 const passportL = require('passport-local');
 const User = require('./models/user')
 const MongoStore = require('connect-mongo');
+
 const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/yelp-camp'
 
 main().catch(err => console.log('err'));
@@ -31,8 +36,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')))
 
-const secret = 'process.env.SECRET'
-console.log(secret)
+const secret = process.env.SECRET || 'secret'
 
 const store = MongoStore.create({
     mongoUrl: dbUrl,
@@ -84,6 +88,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err })
 })
 
-app.listen(3000, () => {
+const port = process.env.PORT || 3000
+app.listen(port, () => {
     console.log('Port OPEN!');
 })
