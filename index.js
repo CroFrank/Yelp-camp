@@ -15,8 +15,6 @@ const User = require('./models/user')
 const MongoStore = require('connect-mongo');
 const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/yelp-camp'
 
-let loggedInUser;
-
 main().catch(err => console.log('err'));
 async function main() {
     await mongoose.connect(dbUrl)
@@ -33,7 +31,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')))
 
-const secret = process.env.SECRET
+const secret = 'process.env.SECRET'
+console.log(secret)
 
 const store = MongoStore.create({
     mongoUrl: dbUrl,
