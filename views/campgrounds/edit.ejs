@@ -1,0 +1,45 @@
+<% layout('layout/boilerplate') %>
+
+    <div class="row">
+        <h1 class="text-center">Edit Campground</h1>
+        <div class="col-6 offset-3">
+            <form action="/campgrounds/<%= campground._id %>?_method=PUT" class="needs-validation" method="post"
+                novalidate enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" name="campground[title]" id="title"
+                        value="<%= campground.title %>" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" name="campground[location]" id="location"
+                        value="<%= campground.location %>" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Add images</label>
+                    <input class="form-control" type="file" name="image" id="image" value="<%= campground.image %>"
+                        required multiple>
+                </div>
+                <div class="input-group mb-3">
+                    <label class="mb-2" for="price">Price per night</label>
+                    <div class="input-group">
+                        <span class="input-group-text">€</span>
+                        <input type="text" class="form-control" name="campground[price]"
+                            aria-label="Amount (to the nearest dollar)" id="price" value="<%= campground.price %>"
+                            required>
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" name="campground[description]" id="description" required>
+                        <%= campground.description %>
+                    </textarea>
+                </div>
+                <button class="btn btn-info">Update Campground</button>
+            </form>
+            <footer class="mt-3">
+                <a href="/campgrounds">Back to all campgrounds</a>
+            </footer>
+        </div>
+    </div>
