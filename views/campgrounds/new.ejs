@@ -1,40 +1,48 @@
 <% layout('layout/boilerplate') %>
 
-    <div class="row">
-        <h1 class="text-center">Your trip experience</h1>
-        <div class="col-6 offset-3">
-            <form action="/campgrounds" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label class="form-label" for="title">Title</label>
-                    <input class="form-control" type="text" name="campground[title]" id="title" required>
+    <div class="flex flex-col items-center border border-red-50 bg-white rounded-md mb-3">
+        <h1 class="text-center text-3xl py-3">Your trip experience</h1>
+        <div class="w-8/12 mx-auto">
+            <form action="/campgrounds" method="post" class="needs-validation flex flex-col" novalidate
+                enctype="multipart/form-data">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold my-2" for="title">Title</label>
+                    <input class="border rounded-lg py-2 px-3 w-full" type="text" name="campground[title]" id="title"
+                        required>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label" for="location">Location</label>
-                    <input class="form-control" type="text" name="campground[location]" id="location" required>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="location">Location</label>
+                    <input class="border rounded-lg py-2 px-3 w-full" type="text" name="campground[location]"
+                        id="location" required>
                 </div>
-                <div class="mb-3">
-                    <label for="formFileMultiple" class="form-label">Choose files from your machine or simply drag and
-                        drop:</label>
-                    <input class="form-control" type="file" id="formFileMultiple" name="image" multiple>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="formFileMultiple">Choose files from
+                        your machine or simply drag and drop:</label>
+                    <input class="border rounded-lg py-2 px-3 w-full" type="file" id="formFileMultiple" name="image"
+                        multiple>
                 </div>
-                <div class="input-group mb-3">
-                    <label class="mb-2" for="price">Price per night</label>
-                    <div class="input-group">
-                        <span class="input-group-text">€</span>
-                        <input type="text" class="form-control" name="campground[price]"
-                            aria-label="Amount (to the nearest dollar)" id="price" required>
-                        <span class="input-group-text">.00</span>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="price">Price per night</label>
+                    <div class="relative rounded-md shadow-sm">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="text-gray-500 sm:text-sm">€</span>
+                        </div>
+                        <input type="text" class="border rounded-lg py-2 pl-10 pr-3 w-full" name="campground[price]"
+                            id="price" required>
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <span class="text-gray-500 sm:text-sm">.00</span>
+                        </div>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label" for="description">Description</label>
-                    <textarea class="form-control" type="text" name="campground[description]" id="description"
-                        required></textarea>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="description">Description</label>
+                    <textarea class="border rounded-lg py-2 px-3 w-full h-36" type="text" name="campground[description]"
+                        id="description" required></textarea>
                 </div>
-                <button class="btn btn-success">Add Campground</button>
+                <div class="flex justify-center">
+                    <button class="w-5/6 max-w-sm bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mb-3">Add
+                        Campground</button>
+                </div>
             </form>
-            <footer>
-                <a href="/campgrounds">All campgrounds</a>
-            </footer>
         </div>
     </div>

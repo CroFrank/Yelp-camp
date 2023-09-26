@@ -20,4 +20,5 @@ router.route('/:id')
 
 router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(campgrounds.editForm))
 
+
 module.exports = router
